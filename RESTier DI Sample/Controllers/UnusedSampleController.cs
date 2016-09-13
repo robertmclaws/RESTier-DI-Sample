@@ -18,6 +18,7 @@ namespace RESTier_DI_Sample.Controllers
     public class UnusedSampleController : EntityFrameworkApi<SampleDbContext>
     {
 
+        // @robertmclaws: This code is no longer necessary because you're registering the code at startup now, where it belongs.
         protected static new IServiceCollection ConfigureApi(Type apType, IServiceCollection services)
         {
             return EntityFrameworkApi<SampleDbContext>.ConfigureApi(apType, services)
