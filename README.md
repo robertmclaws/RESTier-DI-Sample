@@ -7,3 +7,6 @@ sample, backed by a database with a single table.
 
 Only files tha are absolutely necessary to execute the application are included. If you search for `"@robertmclaws:"`,
 you'll find my commentary on the different sections and whether or not they are following best practices.
+
+NOTE: Please see `Startup.cs` for how registration *SHOULD* take place, and `\Controllers\UnusedSampleController.cs` for
+notes on why the current implementation is bad form.
