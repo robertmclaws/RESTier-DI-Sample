@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Owin;
+using Microsoft.Restier.Providers.EntityFramework;
 using Owin;
+using RESTier_DI_Sample.Models;
 
 [assembly: OwinStartup(typeof(RESTier_DI_Sample.Startup))]
 
@@ -20,9 +22,9 @@ namespace RESTier_DI_Sample
             services.AddSingleton<SampleModelBuilder>();
             // @robertmclaws: THIS is where RESTier should fill in the gaps from what the user has already registered, so that
             //                the system can work automagically. No ridiculousness. Simple, clean, effective.
-            //EntityFrameworkApi<SampleDbContext>.RegisterDependencies(services);
+            EntityFrameworkApi<SampleDbContext>.RegisterDependencies(services);
         }
 
-
     }
+
 }

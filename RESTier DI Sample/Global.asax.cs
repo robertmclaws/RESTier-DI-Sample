@@ -8,7 +8,7 @@ namespace RESTier_DI_Sample
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configure(DependencyConfig.Register);
+            //GlobalConfiguration.Configure(DependencyConfig.Register);
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

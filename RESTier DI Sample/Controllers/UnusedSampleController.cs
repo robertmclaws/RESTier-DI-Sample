@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
+using Microsoft.Restier.Core;
 using Microsoft.Restier.Core.Model;
 using Microsoft.Restier.Providers.EntityFramework;
 using RESTier_DI_Sample.Models;
@@ -17,13 +18,11 @@ namespace RESTier_DI_Sample.Controllers
     public class UnusedSampleController : EntityFrameworkApi<SampleDbContext>
     {
 
-        // @robertmclaws: I had to comment this out, because once again, the sample doesn't compile!
-
-        //protected static IServiceCollection ConfigureApi(Type apType, IServiceCollection services)
-        //{
-        //    return EntityFrameworkApi<SampleDbContext>.ConfigureApi(apType, services)
-        //        .AddService<IModelBuilder, SpatialModelExtender>();
-        //}
+        protected static new IServiceCollection ConfigureApi(Type apType, IServiceCollection services)
+        {
+            return EntityFrameworkApi<SampleDbContext>.ConfigureApi(apType, services)
+                .AddService<IModelBuilder, SpatialModelExtender>();
+        }
 
         // @robertmclaws: Putting private classes inside public classes is a *horrible* practice.
         //                One class per file. No exceptions.
@@ -48,14 +47,11 @@ namespace RESTier_DI_Sample.Controllers
             }
         }
 
-        // @robertmclaws: This is in the sample, but the code doesn't even compile. That is not unusual for RESTier,
-        //                and makes it defficult to rely on your work to do my job.
-        //                ALSO: Constructor injection is supposed to dump in the services you need to make the class work,
+        // @robertmclaws: Constructor injection is supposed to dump in the services you need to make the class work,
         //                NOT inject the service container to manipulate. This is totally wrong.
-
-        //public UnusedSampleController(IServiceProvider serviceProvider) : base(serviceProvider)
-        //{
-        //}
+        public UnusedSampleController(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
+        }
 
     }
 
